@@ -1,1 +1,28 @@
-<h1> product is here </h1>
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center row">
+        
+        <div class="col-md-6">
+            <div *ngIf="isAdmin">
+                <button (click)="isAdding = !isAdding" class="btn btn-outline-primary btn-sm mb-2">Add product</button>
+                <app-add-product *ngIf="isAdding"></app-add-product>
+            </div>
+            <div *ngFor="let product of products" class="row p-2 bg-white border rounded mb-2">
+                <div class="col-md-3 mt-1"><img src="{{product.image}}" class="img-fluid img-responsive rounded product-image" ></div>
+                <div class="col-md-6 mt-1">
+                    <h5>{{product.title}}</h5>
+                    <div class="d-flex flex-row">
+                        <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                    </div>
+                    <p class="text-justify text-truncate para mb-0">{{product.details}}<br><br></p>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-row align-items-center">
+                        <h4 class="mr-1">${{product.price}}</h4>
+                    </div>
+                    <h6 class="text-success">Free shipping</h6>
+                    <div class="d-flex flex-column mt-4"><button *ngIf="isAdmin;" class="btn btn-outline-danger btn-sm" type="button">Remove</button><button *ngIf="!isAdmin" class="btn btn-outline-primary btn-sm mt-2" type="button">Add to cart</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

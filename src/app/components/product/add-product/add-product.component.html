@@ -1,0 +1,22 @@
+
+<div id="addProductForm">
+    <div class="form-group">
+        <label for="">Title : </label>
+        <input placeholder="Enter product title ..... " required class="form-control" type="text" [(ngModel)]="title">
+    </div>
+    <div class="form-group">
+        <label>Price : </label>
+        <input placeholder="Enter product price" required class="form-control" [(ngModel)]="price" type="number" name="price">
+    </div>
+    <div class="form-group">
+        <label for="">Details : </label>
+        <textarea placeholder="Enter product details" required class="form-control" [(ngModel)]="details" name="" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Product image</label>
+        <input type="file"  (change)="onSelectedFile($event)" class="form-control" name="image">
+    </div>
+    <div class="form-group">
+        <input class="btn btn-outline-success btn-block" (click)="addProduct($event)" type="submit" value="Add" name="add-product">
+    </div>
+</div>
