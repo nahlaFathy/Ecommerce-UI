@@ -1,0 +1,48 @@
+import { Component, NgModule, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
+
+
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+  
+})
+
+export class LoginComponent implements OnInit {
+  
+  constructor(private LoginService:LoginService,
+    private router: Router) { }
+   response:[]
+  myForm = new FormGroup({
+    email:new FormControl('',[Validators.required]),
+    password:new FormControl('',[Validators.required,Validators.minLength(6)])
+  })
+  ngOnInit(): void {
+  }
+  Login() {
+    if(this.myForm.valid)
+    {
+      console.log(this.myForm.value)
+      this.LoginService.loginUser(
+        this.myForm.value,
+      )
+        .subscribe(
+          res =>
+          {
+             console.log(res)
+             console.log(res.token)
+             console.log(res.isAdmin)
+             localStorage.setItem("Token",res.token);
+             localStorage.setItem("isAdmin",res.isAdmin)
+             this.router.navigateByUrl("/home")
+            },
+          err => alert(err.error)
+          
+        );
+    }
+    }
+}
