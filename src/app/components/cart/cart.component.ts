@@ -11,9 +11,39 @@ export class CartComponent implements OnInit {
   constructor(
     private CartService: CartService,
   ) { }
-
+  productImg: string = '/assets/img/3.png';
+  emptyCart: boolean = false;
   ngOnInit(): void {
+    if (this.products.length == 0) this.emptyCart = true;
+    //get Products for the user
+    this.CartService.allProducts().subscribe((response) => {
+    });
+
+    this.products.forEach(element => {
+      this.total += element.price;
+    });
   }
+  products = [
+    {
+      "_id": "6036130ff81e09a56279e3e5",
+      "details": "product2 details",
+      "price": 195,
+      "title": "product 2"
+    },
+    {
+      "_id": "6036130ff81e09a56279e3e7",
+      "details": "product details",
+      "price": 125,
+      "title": "product 1"
+    },
+    {
+      "_id": "6036130ff81e09a56279e3e7",
+      "details": "product details",
+      "price": 125,
+      "title": "product 3"
+    }
+  ]
+  total: number = 0;
 
   //delete Product from cart
   deleteProduct(_product) {
@@ -36,11 +66,4 @@ export class CartComponent implements OnInit {
         err => console.log(err)
       );
   }
-
-  //get Products for the user
-  getProducts() {
-    this.CartService.allProducts().subscribe((response) => {
-    });
-  }
-
 }
