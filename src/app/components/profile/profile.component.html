@@ -7,9 +7,14 @@
             <div class="account-settings">
                 <div class="user-profile">
                     <div class="user-avatar">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                        <img [src]="url?url:'https://bootdey.com/img/Content/avatar/avatar7.png'" alt="Maxwell Admin">
                     </div>
-                    <h5 class="user-name">Yuki Hayashi</h5>
+                    <input style="display: none" type="file" (change)="onFileChanged($event)"
+                    #fileInput>
+                  <button (click)="fileInput.click()">Change pic</button>
+                    <h5 class="user-name">{{userInfo.username}}</h5>
+                    <div>{{userInfo.email}}</div>
+                    <div>{{userInfo.gender}}</div>
                     
                 </div>
                
@@ -20,26 +25,31 @@
     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
     <div class="card h-100">
         <div class="card-body">
+            <form [formGroup]="myForm">
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                    <h6 class="mb-2 text-primary">Update Personal Details</h6>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                   
                     <div class="form-group">
                         <label for="fullName">Username</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="Enter username">
+                        <input type="text" class="form-control" formControlName="username" id="fullName" placeholder="Enter username">
                     </div>
+                   
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                   
                     <div class="form-group">
                         <label for="eMail">Email</label>
-                        <input type="email" class="form-control" id="eMail" placeholder="Enter email ">
+                        <input type="email" class="form-control" id="eMail" formControlName="email" placeholder="Enter email ">
                     </div>
+                    
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="phone">Password</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Enter password">
+                        <input type="text" class="form-control" id="phone"formControlName="password" placeholder="Enter password">
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
@@ -52,7 +62,7 @@
                                             
                   </div>
             </div>
-            
+        </form>
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="text-right">
