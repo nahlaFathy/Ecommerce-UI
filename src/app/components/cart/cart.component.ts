@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,49 +10,31 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit {
 
   constructor(
+    private route:Router,
     private CartService: CartService,
   ) { }
   productImg: string = '/assets/img/3.png';
   priceImg: string = '/assets/img/4.png';
   emptyCart: boolean = false;
   total: number = 0;
-  products = [
-    {
-      "_id": "6036130ff81e09a56279e3e5",
-      "details": "product2 details",
-      "price": 195,
-      "title": "product 2"
-    },
-    {
-      "_id": "6036130ff81e09a56279e3e7",
-      "details": "product details",
-      "price": 125,
-      "title": "product 1"
-    },
-    {
-      "_id": "6036130ff81e09a56279e3e7",
-      "details": "product details",
-      "price": 125,
-      "title": "product 3"
-    }
-  ]
   productIds = [];
+  products = [];
 
   ngOnInit(): void {
-    if (this.products.length == 0) this.emptyCart = true;
     //get Products for the user
     this.CartService.allProducts().subscribe((response) => {
+      console.log(response);
       this.products = response;
-    });
-
-    this.products.forEach(element => {
-      this.total += element.price;
-    });
-
-    this.products.forEach(element => {
-      this.productIds.push(element._id);
-    });
-    //console.log(this.productIds)
+      if (this.products.length == 0) this.emptyCart = true;
+      //the total price
+      this.products.forEach(element => {
+        this.total += element.price;
+      });
+      //product ids to check ouut
+      this.products.forEach(element => {
+        this.productIds.push(element._id);
+      });
+    });    
   }
 
   //delete Product from cart
@@ -78,13 +61,20 @@ export class CartComponent implements OnInit {
 
   //navigate to home
   goHome() {
-
+    this.route.navigateByUrl('/home');
   }
 
   //checkout products to order
   checkout() {
-    console.log(this.productIds)
-
+    if (confirm(`Are you sure you want to order?`)) {
+      this.CartService.checkout(this.productIds, this.total)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.ngOnInit();
+        },
+        err => console.log(err)
+      );
+    }
   }
-
 }

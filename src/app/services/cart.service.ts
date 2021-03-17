@@ -17,12 +17,7 @@ export class CartService {
   //get all products in user cart
   public allProducts(): Observable<any> {
     return this._HttpClient
-      .get(`${this.baseURL}`, {
-        headers: new HttpHeaders()
-          .set("user-token", localStorage.getItem('Token'))
-        , observe: 'response'
-      }
-      )
+      .get(`${this.baseURL}`)
   }
 
   //delete one product from cart
@@ -37,6 +32,16 @@ export class CartService {
       .post(
         `${this.baseURL}`,
         { _product },
+        { responseType: "text" }
+      )
+  }
+
+  //checkout to order
+  public checkout(_product, totalPrice): Observable<any> {
+    return this._HttpClient
+      .post(
+        `${this.baseURL}/checkout`,
+        { _product, totalPrice },
         { responseType: "text" }
       )
   }
