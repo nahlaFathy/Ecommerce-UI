@@ -64,11 +64,13 @@ a {
 }
 
 .cart-cover article {
-    padding-top: 50px;
+    padding-top: 10%;
 }
 
 .cart-cover article h4{
     text-transform: uppercase;
+    font-size: 21px;
+    font-weight: bold;
 }
 
 .cart-cover img {

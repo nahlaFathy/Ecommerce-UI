@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -17,7 +17,12 @@ export class CartService {
   //get all products in user cart
   public allProducts(): Observable<any> {
     return this._HttpClient
-      .get(`${this.baseURL}`)
+      .get(`${this.baseURL}`, {
+        headers: new HttpHeaders()
+          .set("user-token", localStorage.getItem('Token'))
+        , observe: 'response'
+      }
+      )
   }
 
   //delete one product from cart
@@ -35,5 +40,5 @@ export class CartService {
         { responseType: "text" }
       )
   }
-  
+
 }
