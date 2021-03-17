@@ -29,7 +29,7 @@ export class ProfileService {
       public updateInfo(_user):Observable<any>{
           return this._HttpClient
           .patch(
-              `${this.baseURL}/edit`,_user,{
+              `${this.baseURL}/update`,_user,{
                 headers: new HttpHeaders()
                   .set('user-token',localStorage.getItem('Token'))
                  , observe: 'response'
