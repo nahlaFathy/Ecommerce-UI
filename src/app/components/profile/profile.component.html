@@ -10,9 +10,11 @@
                     <div class="user-avatar">
                         <img [src]="url?url:'https://bootdey.com/img/Content/avatar/avatar7.png'" alt="Maxwell Admin">
                     </div>
-                    <input style="display: none" type="file" (change)="onFileChanged($event)"
+                    <form >
+                    <input style="display: none"  type="file" (change)="onFileChanged($event)"
                     #fileInput>
                   <button class="btn btn-primary" (click)="fileInput.click()">Change pic</button>
+                </form>
                     <h5 class="user-name">{{userInfo.username}}</h5>
                     <div>{{userInfo.email}}</div>
                     <div>{{userInfo.gender}}</div>
