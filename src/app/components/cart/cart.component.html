@@ -1,9 +1,7 @@
 <div class="text-center">
     <div class="container mb-5">
-
         <div class="empty-space h35-xs h100-md"></div>
         <div *ngIf="!emptyCart" class="row">
-
             <div class="col-md-7">
                 <ng-template ngFor let-product [ngForOf]="products" let-i="index">
                     <div class="cart-cover text-center">
@@ -25,19 +23,17 @@
                     </div>
                 </ng-template>
             </div>
-
-
             <div class="col-md-5 text-center cart-price">
                 <article>
+                    <a><img src={{priceImg}} alt=""></a>
                     <h6 class="cart-totalPrice">Total:</h6>
                     <a class="price">${{total}}</a>
                     <p>checkout to order</p>
                 </article>
                 <div class="btn-wrap text-center">
-                    <a class="btn-2"><span>porceed to checkout</span></a>
+                    <a class="btn-2" (click)="checkout()"><span>porceed to checkout</span></a>
                 </div>
             </div>
-
         </div>
 
         <div *ngIf="emptyCart">
@@ -50,7 +46,7 @@
                         <article class="bg-text">
                             <h4>Shopping Cart is currently empty</h4>
                             <p>Add items to your cart and view them here before you checkout.</p>
-                            <div class="btn-wrap"><a class="btn-1"><span>Continue Shopping</span></a></div>
+                            <div class="btn-wrap"><a class="btn-1" (click)="goHome()"><span>Continue Shopping</span></a></div>
                         </article>
                     </div>
                 </div>
