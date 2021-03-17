@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   selectedFile: File
   url:string
   userInfo
-  userUpdated=[]
+  userUpdated:{username:string,email:string,password:string,gender:string}
   orders=[]
   myForm = new FormGroup({
     username:new FormControl('',[]),
@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
   })
    ngOnInit(): void {
     this.getInfo()
+    this.getOrders()
   }
  
   onFileChanged(event) {
@@ -69,30 +70,16 @@ export class ProfileComponent implements OnInit {
     if(this.myForm.value)
     {
 
-      console.log(localStorage.getItem('Token'))
-         if(this.myForm.value.username!="")
-         {
-           this.userUpdated.push({"username":this.myForm.value.username})
-         }
-         if(this.myForm.value.email!="")
-         {
-           this.userUpdated.push({"email":this.myForm.value.email})
-         }
-         if(this.myForm.value.password!="")
-         {
-           this.userUpdated.push({"password":this.myForm.value.password})
-         }
-         if(this.myForm.value.username!="")
-         {
-           this.userUpdated.push({"gneder":this.myForm.value.gender})
-         }
+    console.log(this.myForm.value)
+        
 
-      console.log(this.userUpdated)
-      this.ProfileService.updateInfo({"username":"admin","gender":"female"})
+      
+      this.ProfileService.updateInfo(this.myForm.value)
       .subscribe(
         async res=>
         {
           this.userInfo=res.body.user
+          this.myForm.reset();
         }
         ,err => alert(err.error)
       )
