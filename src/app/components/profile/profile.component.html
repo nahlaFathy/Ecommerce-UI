@@ -1,3 +1,4 @@
+
 <div class="body">
 <div class="container">
     <div class="row gutters">
@@ -11,7 +12,7 @@
                     </div>
                     <input style="display: none" type="file" (change)="onFileChanged($event)"
                     #fileInput>
-                  <button (click)="fileInput.click()">Change pic</button>
+                  <button class="btn btn-primary" (click)="fileInput.click()">Change pic</button>
                     <h5 class="user-name">{{userInfo.username}}</h5>
                     <div>{{userInfo.email}}</div>
                     <div>{{userInfo.gender}}</div>
@@ -66,8 +67,8 @@
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="text-right">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                        <button type="button" id="submit" name="submit" class="btn btn-secondary"(click)="Cancel()">Cancel</button>
+                        <button type="button" id="submit" name="submit" class="btn btn-primary" (click)=" updateInfo()">Update</button>
                     </div>
                 </div>
             </div>
@@ -96,9 +97,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr scope="row">
-                            <td><strong>showSpeed</strong></td>
-                            <td>15</td>
+                          <tr scope="row" *ngFor="let order of orders">
+                            <td><strong>{{order._id}}</strong></td>
+                            <td>{{order.status}}</td>
                             
                           </tr>
                   

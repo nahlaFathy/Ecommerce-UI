@@ -13,22 +13,27 @@ export class ProfileService {
         private _HttpClient: HttpClient,
       ) { }
       private baseURL: string = `${environment.api}/api/users`
-
+      private orderURL:string=`${environment.api}/api/order`
+      
       public updateImage(_image): Observable<any> {
         console.log(_image)
         return this._HttpClient
           .patch(
             `${this.baseURL}/image`, _image,{
-                headers: new HttpHeaders()
-                  .set('Access-Control-Allow-Origin','*')
-                 , observe: 'response'
+              headers: new HttpHeaders()
+                .set('Access-Control-Allow-Origin','*')
+               , observe: 'response'
             }
           )
       }
       public updateInfo(_user):Observable<any>{
           return this._HttpClient
           .patch(
-              `${this.baseURL}/edit`,_user
+              `${this.baseURL}/edit`,_user,{
+                headers: new HttpHeaders()
+                  .set('user-token',localStorage.getItem('Token'))
+                 , observe: 'response'
+              }
           )
       }
       public getUserInfo():Observable<any>{
@@ -36,10 +41,27 @@ export class ProfileService {
           .get(
             `${this.baseURL}`,{
                 headers: new HttpHeaders()
-                  .set('user-token',localStorage.getItem('Token'))
-                 , observe: 'response'
+                  .set('user-token',localStorage.getItem('Token')
+                  
+                  )
+                 , observe: 'response',
+                 
               }
           )
       }
-
+   public getOrders():Observable<any>
+   {
+     return this._HttpClient
+     .get(`${this.orderURL}`,
+     {
+      headers: new HttpHeaders()
+      .set('user-token',localStorage.getItem('Token')
+      
+      )
+     , observe: 'response',
+     
+     }
+     
+     )
+   }
 }

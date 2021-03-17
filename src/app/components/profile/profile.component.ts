@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse,HttpHeaders} from '@angular/common/http';
 import { ProfileService } from 'src/app/services/profile.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,6 +17,8 @@ export class ProfileComponent implements OnInit {
   selectedFile: File
   url:string
   userInfo
+  userUpdated=[]
+  orders=[]
   myForm = new FormGroup({
     username:new FormControl('',[]),
     email:new FormControl('',[]),
@@ -34,8 +37,12 @@ export class ProfileComponent implements OnInit {
   onUpload() {
     // this.http is the injected HttpClient
     const uploadData = new FormData();
-    uploadData.append('image', this.selectedFile, this.selectedFile.name);
-    this.ProfileService.updateImage(uploadData)
+    
+        
+    uploadData.append('image', this.selectedFile);
+    
+        
+    this.ProfileService.updateImage(uploadData )
     .subscribe(
       res =>
       {
@@ -54,6 +61,55 @@ export class ProfileComponent implements OnInit {
         this.url=res.body.image;
          console.log(res)
          console.log(this.userInfo)
+        },
+      err => alert(err.error)
+    );
+  }
+  updateInfo(){
+    if(this.myForm.value)
+    {
+
+      console.log(localStorage.getItem('Token'))
+         if(this.myForm.value.username!="")
+         {
+           this.userUpdated.push({"username":this.myForm.value.username})
+         }
+         if(this.myForm.value.email!="")
+         {
+           this.userUpdated.push({"email":this.myForm.value.email})
+         }
+         if(this.myForm.value.password!="")
+         {
+           this.userUpdated.push({"password":this.myForm.value.password})
+         }
+         if(this.myForm.value.username!="")
+         {
+           this.userUpdated.push({"gneder":this.myForm.value.gender})
+         }
+
+      console.log(this.userUpdated)
+      this.ProfileService.updateInfo({"username":"admin","gender":"female"})
+      .subscribe(
+        async res=>
+        {
+          this.userInfo=res.body.user
+        }
+        ,err => alert(err.error)
+      )
+    }
+  }
+
+  Cancel(){
+    this.myForm.reset();
+  }
+  getOrders(){
+    this.ProfileService.getOrders()
+    .subscribe(
+     async res =>
+      {
+        await res.body.forEach(element => this.orders.push(element));
+         console.log(res)
+        
         },
       err => alert(err.error)
     );
