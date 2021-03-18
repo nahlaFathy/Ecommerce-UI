@@ -90,3 +90,7 @@ a {
 .cart-price {
     margin-top: 50px;
 }
+
+.warning-header{
+    color: brown;
+}

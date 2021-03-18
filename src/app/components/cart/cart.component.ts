@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
     private route:Router,
     private CartService: CartService,
   ) { }
-  productImg: string = '/assets/img/3.png';
+  productImg: string = '/assets/img/products/2.png';
   priceImg: string = '/assets/img/4.png';
   emptyCart: boolean = false;
   total: number = 0;
