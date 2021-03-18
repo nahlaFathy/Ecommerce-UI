@@ -1,12 +1,22 @@
-.body {
-    height: 100vh;
+ 
+.container-fluid{
+	
     width: 100%;
     margin: 0;
     padding-top: 150px;
     color: #2e323c;
-    position: relative;
     
-}  
+	background: -webkit-gradient(linear, left bottom, left top, from(#c7cabc), to(#eef2de));
+    background: -webkit-linear-gradient(bottom, #c7cabc 0%, #eef2de 100%);
+    background: -moz-linear-gradient(bottom, #c7cabc 0%, #eef2de 100%);
+    background: -o-linear-gradient(bottom, #c7cabc 0%, #eef2de 100%);
+    background: linear-gradient(to top, #c7cabc 0%, #eef2de  100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
     padding-bottom: 1rem;
@@ -31,17 +41,7 @@
     font-weight: 400;
     color: #9fa8b9;
 }
-.account-settings .about {
-    margin: 2rem 0 0 0;
-    text-align: center;
-}
-.account-settings .about h5 {
-    margin: 0 0 15px 0;
-    color: #007ae1;
-}
-.account-settings .about p {
-    font-size: 0.825rem;
-}
+
 .form-control {
     border: 1px solid #cfd1d8;
     -webkit-border-radius: 2px;
@@ -185,4 +185,11 @@ tbody:hover tr:hover td {
       align-items: flex-end;
      
   }
-  
+  .delete{
+	  color: darkred;
+	  
+  }
+  .btn{
+	margin: 5px;
+	margin-top: 20px;
+}

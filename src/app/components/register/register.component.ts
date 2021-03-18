@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) { }
   myForm = new FormGroup({
-    username:new FormControl('',[Validators.required,Validators.minLength(5)]),
+    username:new FormControl('',[Validators.required,Validators.minLength(4)]),
     email:new FormControl('',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     password:new FormControl('',[Validators.required,Validators.minLength(6)]),
     gender:new FormControl('',[Validators.required])
@@ -39,5 +39,7 @@ export class RegisterComponent implements OnInit {
         );
     }
     }
-    
+    login(){
+      this.router.navigateByUrl("/login")
+    }
 }

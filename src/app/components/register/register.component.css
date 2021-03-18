@@ -532,4 +532,10 @@
       padding-bottom: 45px;
     }
   }
-  
+  .p{
+    color:white;
+    margin-top: 15px ;
+    margin-left: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+  }

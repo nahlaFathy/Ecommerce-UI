@@ -161,13 +161,7 @@
   /* ==========================================================================
      #BACKGROUND
      ========================================================================== */
-  .bg-blue {
-    background: #2c6ed5;
-  }
-  
-  .bg-red {
-    background: #fa4251;
-  }
+
   
   .bg-gra-01 {
     background: -webkit-gradient(linear, left bottom, left top, from(#eef2de), to(#c7cabc));
@@ -232,7 +226,6 @@
     padding: 0 33px;
     font-family: Poppins, Arial, "Helvetica Neue", sans-serif;
     cursor: pointer;
- 
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -240,6 +233,12 @@
     font-size: 18px;
     margin-top: 30px;
     
+  }
+  .btn-light:enabled
+  {
+    color: #212529;
+    background-color: #e6e8eb;
+    border-color: #f8f9fa;
   }
   .btn:hover{
   opacity: 0.8;
@@ -259,13 +258,7 @@
     border-radius: 20px;
   }
   
-  .btn--green {
-    background: #57b846;
-  }
-  
-  .btn--green:hover {
-    background: #4dae3c;
-  }
+ 
   
   /* ==========================================================================
      #DATE PICKER
@@ -531,5 +524,12 @@
       padding: 37px 30px;
       padding-bottom: 45px;
     }
+  }
+  .p{
+    color:white;
+    margin-top: 15px ;
+    margin-left: 15px;
+    text-decoration: underline;
+    cursor: pointer;
   }
   

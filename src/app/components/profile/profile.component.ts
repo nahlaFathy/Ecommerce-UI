@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse,HttpHeaders} from '@angular/common/http';
 import { ProfileService } from 'src/app/services/profile.service';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FileSelectDirective, FileDropDirective, FileUploader, FileUploaderOptions } from 'ng2-file-upload';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,10 +11,12 @@ import { FileSelectDirective, FileDropDirective, FileUploader, FileUploaderOptio
 })
 export class ProfileComponent implements OnInit {
   uploader: FileUploader;
-
+  ngOnChanges(){
+    
+  }
   constructor(
               private  ProfileService: ProfileService,
-              private formBuilder: FormBuilder
+              private router: Router
               ) { }
  
   url:string
@@ -33,24 +35,7 @@ export class ProfileComponent implements OnInit {
     this.getInfo()
     this.getOrders()
     
-    const uploaderOptions: FileUploaderOptions = {
-      
-      url: `https://api.cloudinary.com/v1_1/688922327779674:ykN6YD8W7EvXW6uIjfKJiqiIo3k@ecommerceiti/upload`,
-      // Upload files automatically upon addition to upload queue
-      autoUpload: true,
-      // Use xhrTransport in favor of iframeTransport
-      isHTML5: true,
-      // Calculate progress independently for each uploaded file
-      removeAfterUpload: true,
-      // XHR request headers
-      headers: [
-        {
-          name: 'X-Requested-With',
-          value: 'XMLHttpRequest'
-        }
-      ]
-    };
-    this.uploader = new FileUploader(uploaderOptions);
+   // console.log(localStorage.getItem('Token'))
   }
  
   onFileChanged(event) {
@@ -116,6 +101,21 @@ export class ProfileComponent implements OnInit {
       {
         await res.body.forEach(element => this.orders.push(element));
          console.log(res)
+        
+        },
+      err => alert(err.error)
+    );
+  }
+  DeleteUser()
+  {
+    this.ProfileService.deleteUser()
+    .subscribe(
+     async res =>
+      {
+        alert(res)
+         console.log(res)
+         localStorage.removeItem('Token')
+         this.router.navigateByUrl("/register")
         
         },
       err => alert(err.error)
