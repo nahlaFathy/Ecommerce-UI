@@ -2,21 +2,33 @@
 <div id="addProductForm">
     <div class="form-group">
         <label for="">Title : </label>
-        <input placeholder="Enter product title ..... " required class="form-control" type="text" [(ngModel)]="title">
+        <input placeholder="Enter product title ..... " (keydown)="checkTitle()" required class="form-control" type="text" [(ngModel)]="title">
+        <span class="text-danger">{{titleError}}</span>
     </div>
     <div class="form-group">
         <label>Price : </label>
-        <input placeholder="Enter product price" required class="form-control" [(ngModel)]="price" type="number" name="price">
+        <input placeholder="Enter product price" min="0" (keydown)="checkPrice()" value="0" required class="form-control" [(ngModel)]="price" type="number" name="price">
+        <span class="text-danger">{{priceError}}</span>
     </div>
     <div class="form-group">
         <label for="">Details : </label>
-        <textarea placeholder="Enter product details" required class="form-control" [(ngModel)]="details" name="" id="" cols="30" rows="10"></textarea>
+        <textarea placeholder="Enter product details" (keydown)="checkDetails()" required class="form-control" [(ngModel)]="details" name="" id="" cols="30" rows="10"></textarea>
+        <span class="text-danger">{{detailsError}}</span>
     </div>
     <div class="form-group">
         <label>Product image</label>
-        <input type="file"  (change)="onSelectedFile($event)" class="form-control" name="image">
+        <input #productImage type="file"   (change)="onSelectFile($event);checkImage()" class="form-control" name="image">
+        <span class="text-danger">{{imgError}}</span>
     </div>
     <div class="form-group">
         <input class="btn btn-outline-success btn-block" (click)="addProduct($event)" type="submit" value="Add" name="add-product">
+    </div>
+    <div *ngIf="isAdded != null">
+        <div *ngIf="isAdded" class="alert alert-success" role="alert">
+           Product has been added successfully
+        </div>
+        <div *ngIf="!isAdded" class="alert alert-danger" role="alert" >
+            {{addProductError}}
+        </div>
     </div>
 </div>
