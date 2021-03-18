@@ -14,7 +14,7 @@ export class OrdersComponent implements OnInit {
     private OrderService: OrderService
   ) { }
 
-  orderFlag: boolean;
+  orderFlag: boolean = false;
   productImg: string = '/assets/img/products/1.png';
   orders: [];
   priceImg: string = '/assets/img/5.png';
