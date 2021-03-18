@@ -50,8 +50,7 @@ export class AddProductComponent implements OnInit {
               setTimeout(()=>{
                 this.isAdded = null;
               },3000);
-              //Will be edit after edit api
-              this.addProductEvent.emit({_id:"1233333",title:"ssssssss",price:"150",details:"sssssssssss",image:"sssssssss"});
+              this.addProductEvent.emit(Object.values(res)[1]);
               event.target.value = "Add";
               event.target.disabled = false;
             }
