@@ -7,6 +7,7 @@ import {  Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  
 
   constructor(private router: Router) { }
  action:string ="Sign In"
@@ -14,6 +15,10 @@ export class NavbarComponent implements OnInit {
  root:string="/register"
   ngOnInit(): void {
     this.checkToken()
+  }
+  ngOnChanges() {
+    console.log("change...")
+    this.checkToken
   }
   onClick(){
     
@@ -27,7 +32,7 @@ export class NavbarComponent implements OnInit {
     
     }
   }
-  checkToken(){
+   checkToken(){
     if(localStorage.getItem('Token')!=null||localStorage.getItem('Token')!=undefined)
     {
       this.action='Profile'

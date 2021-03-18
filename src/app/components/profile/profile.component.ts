@@ -4,6 +4,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FileSelectDirective, FileDropDirective, FileUploader, FileUploaderOptions } from 'ng2-file-upload';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -44,6 +45,9 @@ export class ProfileComponent implements OnInit {
     
     let uploadData=new FormData()
     uploadData.append('image', this.image);
+   /* uploadData.append('api_key', '688922327779674')
+    uploadData.append('upload_preset', 'ml_default')
+    uploadData.append('cloud_name', 'ecommerceiti')*/
     
         console.log(this.image)
 
@@ -51,7 +55,7 @@ export class ProfileComponent implements OnInit {
     .subscribe(
       res =>
       {
-        // this.url=res.image;
+         this.url=res.body.image;
          console.log(res)
         },
       err => alert(err.error)
@@ -76,8 +80,6 @@ export class ProfileComponent implements OnInit {
     {
 
     console.log(this.myForm.value)
-        
-
       
       this.ProfileService.updateInfo(this.myForm.value)
       .subscribe(

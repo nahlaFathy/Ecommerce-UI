@@ -2,7 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-
+import {  NavbarComponent } from "src/app/components/navbar/navbar.component";
 
 
 @Component({

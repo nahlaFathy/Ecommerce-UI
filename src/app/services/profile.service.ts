@@ -21,7 +21,7 @@ export class ProfileService {
       .patch(
         `${this.baseURL}/image`, _image, {
         headers: new HttpHeaders()
-          .set('Access-Control-Allow-Origin', '*')
+        .set('user-token', localStorage.getItem('Token'))
         , observe: 'response'
       }
       )
