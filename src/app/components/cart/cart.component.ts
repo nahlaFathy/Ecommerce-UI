@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   ) { }
   productImg: string = '/assets/img/products/2.png';
   priceImg: string = '/assets/img/4.png';
-  emptyCart: boolean = false;
+  emptyCart: boolean = true;
   total: number = 0;
   productIds = [];
   products = [];
@@ -77,4 +77,5 @@ export class CartComponent implements OnInit {
       );
     }
   }
+  
 }
