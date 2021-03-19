@@ -5,7 +5,7 @@
             <div class="card-body">
                 <h2 class="title">Registration</h2>
                 <form [formGroup]="myForm" method="post" action="">
-                    <div class="input-group">
+                    <div>
                         <input class="input--style-3 js-datepicker" type="text" formControlName="username" placeholder="Username" name="username">
                         <p *ngIf="myForm.controls.username.errors" class="alert ">
                             <span *ngIf="myForm.controls.username.errors.minlength" class="alert-danger">
@@ -14,8 +14,9 @@
             
                             </p>
                     </div>
+                    <hr class="input-group">
                     
-                    <div class="input-group">
+                    <div>
                         <input class="input--style-3 js-datepicker" type="email"  formControlName="email" placeholder="Email" name="Email">
                         <p *ngIf="myForm.controls.email.errors" class="alert ">
                   
@@ -28,7 +29,9 @@
                             </p>
 
                     </div>
-                    <div class="input-group">
+                    <hr class="input-group">
+
+                    <div>
                         <input class="input--style-3" type="password"  formControlName="password" placeholder="Password" name="Password">
                         <p *ngIf="myForm.controls.password.errors" class="alert ">
                   
@@ -37,6 +40,8 @@
                             </span>
                             </p>
                     </div>
+                    <hr class="input-group">
+
                     <div >
                         <div class="rs-select2 js-select-simple select--no-search">
                           <label>Gender  </label>  

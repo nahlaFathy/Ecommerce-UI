@@ -1,11 +1,11 @@
-declare var require:any
+declare var require: any
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
-import { ProductComponent} from './components/product/product.component';
-import {HttpClientModule} from '@angular/common/http';
+import { ProductComponent } from './components/product/product.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Components/login/login.component';
@@ -16,17 +16,24 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { OrderComponent } from './components/order/order.component';
 import { SliderComponent } from './components/home/slider/slider.component';
-import {EventEmitterService} from './services/event-emitter.service'
-const routes:Routes = [
-  {path:'home',component:HomeComponent},
-  {path:'profile',component:ProfileComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'login',component:LoginComponent},
-  {path:'**',component:ErrorComponent},
-  {path:'cart',component:CartComponent},
-  {path:'order',component:OrderComponent},
+import { EventEmitterService } from './services/event-emitter.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthGuardService } from './services/auth-guard.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { OrdersComponent } from './components/orders/orders.component';
+import { AboutComponent } from './components/about/about.component';
 
-  
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuardService] },
+  { path: 'order', component: OrderComponent, canActivate: [AuthGuardService] },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuardService] },
+  { path: 'about', component: AboutComponent },
+  { path: '**', component: ErrorComponent },
 ]
 @NgModule({
   declarations: [
@@ -41,7 +48,9 @@ const routes:Routes = [
     NavbarComponent,
     OrderComponent,
     CartComponent,
-    SliderComponent
+    SliderComponent,
+    AboutComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -49,11 +58,16 @@ const routes:Routes = [
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot(routes),
-   
-    
+    NgxPaginationModule
   ],
   providers: [
-    EventEmitterService
+    AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    EventEmitterService,
   ],
   bootstrap: [AppComponent]
 })
