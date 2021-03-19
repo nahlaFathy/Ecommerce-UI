@@ -22,6 +22,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AboutComponent } from './components/about/about.component';
+import {AddProductComponent} from './components/product/add-product/add-product.component'
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -50,7 +51,8 @@ const routes: Routes = [
     CartComponent,
     SliderComponent,
     AboutComponent,
-    OrdersComponent
+    OrdersComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
