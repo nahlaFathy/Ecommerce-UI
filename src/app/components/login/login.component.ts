@@ -2,7 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import {  NavbarComponent } from "src/app/components/navbar/navbar.component";
+import { EventEmitterService } from '../../services/event-emitter.service';    
 
 
 @Component({
@@ -15,7 +15,8 @@ import {  NavbarComponent } from "src/app/components/navbar/navbar.component";
 export class LoginComponent implements OnInit {
   
   constructor(private LoginService:LoginService,
-    private router: Router) { }
+    private router: Router,
+    private eventEmitterService: EventEmitterService    ) { }
    response:[]
   myForm = new FormGroup({
     email:new FormControl('',[Validators.required]),
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
             
              localStorage.setItem("Token",res.token);
              localStorage.setItem("isAdmin",res.isAdmin)
+             this.eventEmitterService.onLoginComponentButtonClick();  
              this.router.navigateByUrl("/home")
             },
           err => alert(err.error)

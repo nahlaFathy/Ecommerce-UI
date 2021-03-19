@@ -1,6 +1,6 @@
-import { Component, OnInit,HostListener } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import {  Router } from '@angular/router';
-@HostListener('window:scroll', ['$event'])
+import { EventEmitterService } from '../../services/event-emitter.service'; 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,12 +9,20 @@ import {  Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private eventEmitterService: EventEmitterService  ) { }
  action:string ="Sign In"
  iconClass:string="fas fa-sign-in-alt fa-lg"
  root:string="/register"
   ngOnInit(): void {
+
     this.checkToken()
+    if (this.eventEmitterService.subsVar==undefined) {    
+      this.eventEmitterService.subsVar = this.eventEmitterService.    
+      invokeFirstComponentFunction.subscribe((name:string) => {    
+        console.log("emitted")
+        this.checkToken();    
+      });    
+    }   
   }
   ngOnChanges() {
     console.log("change...")
