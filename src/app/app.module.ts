@@ -19,6 +19,7 @@ import { SliderComponent } from './components/home/slider/slider.component';
 import { EventEmitterService } from './services/event-emitter.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AuthGuardService } from './services/auth-guard.service';
+import { LogginAuthGuardService } from './services/loggin-auth-guard.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AboutComponent } from './components/about/about.component';
@@ -27,8 +28,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [LogginAuthGuardService] },
+  { path: 'login', component: LoginComponent, canActivate: [LogginAuthGuardService] },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuardService] },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuardService] },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuardService] },
