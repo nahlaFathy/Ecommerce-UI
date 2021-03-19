@@ -9,17 +9,24 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-    constructor(
-        private _HttpClient: HttpClient,
-      ) { }
-      private baseURL: string = `${environment.api}/api/users`
+  constructor(
+    private _HttpClient: HttpClient,
+  ) { }
+  private baseURL: string = `${environment.api}/api/users`
 
-      public loginUser(_user): Observable<any> {
-        console.log(_user)
-        return this._HttpClient
-          .post(
-            `${this.baseURL}/userlogin`, _user 
-          )
-      }
+  public loginUser(_user): Observable<any> {
+    console.log(_user)
+    return this._HttpClient
+      .post(
+        `${this.baseURL}/userlogin`, _user
+      )
+  }
 
+  public isLogged() {
+    return !!(localStorage.getItem("Token"));
+  }
+
+  public isAdmin() {
+    return !!(localStorage.getItem("isAdmin"));
+  }
 }

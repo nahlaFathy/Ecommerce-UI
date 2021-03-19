@@ -19,13 +19,18 @@ export class CartComponent implements OnInit {
   total: number = 0;
   productIds = [];
   products = [];
+  isAdmin: boolean = localStorage.getItem("isAdmin") == "true";
 
   ngOnInit(): void {
     //get Products for the user
+    this.getProducts();
+  }
+  getProducts(){
     this.CartService.allProducts().subscribe((response) => {
       console.log(response);
       this.products = response;
       if (this.products.length == 0) this.emptyCart = true;
+      else this.emptyCart = false;
       //the total price
       this.products.forEach(element => {
         this.total += element.price;
@@ -34,9 +39,8 @@ export class CartComponent implements OnInit {
       this.products.forEach(element => {
         this.productIds.push(element._id);
       });
-    });    
+    }); 
   }
-
   //delete Product from cart
   deleteProduct(_product) {
     if (confirm(`Are you sure you want to delete the selected product?`)) {
@@ -71,11 +75,11 @@ export class CartComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.ngOnInit();
+          this.getProducts();
         },
         err => console.log(err)
       );
     }
   }
-  
+
 }

@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse,HttpHeaders} from '@angular/common/http';i
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css', '../product.component.css', '../../cart/cart.component.css']
 })
 export class AddProductComponent implements OnInit {
   image = null;

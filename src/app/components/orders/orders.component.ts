@@ -13,7 +13,8 @@ export class OrdersComponent implements OnInit {
     private route: Router,
     private OrderService: OrderService
   ) { }
-
+  
+  isAdmin: boolean = localStorage.getItem("isAdmin") == "true";
   orderFlag: boolean = false;
   productImg: string = '/assets/img/products/1.png';
   orders: [];
