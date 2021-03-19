@@ -52,13 +52,15 @@ const routes: Routes = [
     SliderComponent,
     AboutComponent,
     OrdersComponent,
-    AddProductComponent
+    AddProductComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgModule,
     RouterModule.forRoot(routes),
     NgxPaginationModule
   ],
