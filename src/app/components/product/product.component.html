@@ -1,6 +1,6 @@
 <div class="container cards">
     <div class="row d-flex justify-content-center">
-        <div class="col-12 product-header text-center">
+        <div *ngIf="user;" class="col-12 product-header text-center">
             <h2><span>P</span>roducts</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div class="product-btn" *ngIf="isAdmin">
@@ -33,6 +33,6 @@
             </div>
         </div>
     </div>
-    <pagination-controls id="listing_pagination" class="text-center paginationNo" maxSize="6" directionLinks="true"
+    <pagination-controls *ngIf="user;" id="listing_pagination" class="text-center paginationNo" maxSize="6" directionLinks="true"
         (pageChange)="page = $event"></pagination-controls>
 </div>

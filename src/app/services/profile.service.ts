@@ -21,7 +21,6 @@ export class ProfileService {
       .patch(
         `${this.baseURL}/image`, _image, {
         headers: new HttpHeaders()
-        .set('user-token', localStorage.getItem('Token'))
         , observe: 'response'
       }
       )
@@ -31,7 +30,6 @@ export class ProfileService {
       .patch(
         `${this.baseURL}/update`, _user, {
         headers: new HttpHeaders()
-          .set('user-token', localStorage.getItem('Token'))
         , observe: 'response'
       }
       )
@@ -41,9 +39,6 @@ export class ProfileService {
       .get(
         `${this.baseURL}`, {
         headers: new HttpHeaders()
-          .set('user-token', localStorage.getItem('Token')
-
-          )
         , observe: 'response',
 
       }
@@ -54,9 +49,6 @@ export class ProfileService {
       .get(`${this.orderURL}`,
         {
           headers: new HttpHeaders()
-            .set('user-token', localStorage.getItem('Token')
-
-            )
           , observe: 'response',
 
         }
@@ -69,9 +61,6 @@ export class ProfileService {
       .delete(`${this.baseURL}/delete`,
         {
           headers: new HttpHeaders()
-            .set('user-token', localStorage.getItem('Token')
-
-            )
           , observe: 'response',
 
         }

@@ -13,6 +13,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class ProductComponent implements OnInit {
     token = localStorage.getItem("Token");
     isAdmin: boolean = localStorage.getItem("isAdmin") == "true";
+    user: boolean = localStorage.getItem('Token')!=null;
     isAdding: boolean;
     totalProducts: number;
     products = [];
@@ -28,6 +29,7 @@ export class ProductComponent implements OnInit {
         this.getAllProducts();
         console.log(this.isAdmin);
     }
+    
     getAllProducts() {
         this.ProductService.allProducts().subscribe((response) => {
             console.log(response)
