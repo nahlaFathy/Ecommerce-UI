@@ -35,11 +35,7 @@ export class AddProductComponent implements OnInit {
     formData.append("details",this.details);
     formData.append("title",this.title);
     if(this.checkInputs(event)){
-        this.http.post(environment.api+'/api/product/add',formData,{
-            headers: new HttpHeaders()
-                .set('user-token',this.token),
-                
-            })
+        this.http.post(environment.api+'/api/product/add',formData)
             .subscribe(  res =>{
               this.image = "";
               this.title = "";
