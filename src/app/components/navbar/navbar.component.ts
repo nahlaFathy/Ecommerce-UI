@@ -40,6 +40,8 @@ export class NavbarComponent implements OnInit {
     
     }
   }
+  isAdmin: boolean = localStorage.getItem("isAdmin") == "true";
+  user: boolean = localStorage.getItem('Token')!=null;
    checkToken(){
     if(localStorage.getItem('Token')!=null||localStorage.getItem('Token')!=undefined)
     {
