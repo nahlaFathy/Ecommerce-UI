@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build --prod",
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./out ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
