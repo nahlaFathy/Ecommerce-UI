@@ -44,9 +44,7 @@ export class ProfileComponent implements OnInit {
     
     let uploadData=new FormData()
     uploadData.append('image', this.image);
-   /* uploadData.append('api_key', '688922327779674')
-    uploadData.append('upload_preset', 'ml_default')
-    uploadData.append('cloud_name', 'ecommerceiti')*/
+   
     
         console.log(this.image)
 
@@ -71,7 +69,10 @@ export class ProfileComponent implements OnInit {
          console.log(res)
          console.log(this.userInfo)
         },
-      err => alert(err.error)
+      err => {
+        alert(err.error)
+         this.url="https://bootdey.com/img/Content/avatar/avatar7.png"
+      }
     );
   }
   updateInfo(){
