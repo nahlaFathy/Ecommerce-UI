@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
           {
             
              localStorage.setItem("Token",res.token);
+             console.log(res.token)
              localStorage.setItem("isAdmin",res.isAdmin)
              this.eventEmitterService.onLoginComponentButtonClick();  
              this.router.navigateByUrl("/")
