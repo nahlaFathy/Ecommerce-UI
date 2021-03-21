@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit,ViewChild,EventEmitter, Output  } from '@angular/core';
-import {HttpClient, HttpErrorResponse,HttpHeaders} from '@angular/common/http';import { environment } from 'src/environments/environment';
+import {HttpClient, HttpErrorResponse,HttpHeaders} from '@angular/common/http';import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',

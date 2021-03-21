@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpErrorResponse,HttpHeaders} from '@angular/common/http';
-import { ProfileService } from 'src/app/services/profile.service';
+import { ProfileService } from '../../services/profile.service';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FileSelectDirective, FileDropDirective, FileUploader, FileUploaderOptions } from 'ng2-file-upload';
 import { Router } from '@angular/router';

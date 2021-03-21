@@ -3,9 +3,9 @@
   "compileOnSave": false,
   
   "compilerOptions": {
-     "paths": { 
-      },
-    "baseUrl": "./",
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+   
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
