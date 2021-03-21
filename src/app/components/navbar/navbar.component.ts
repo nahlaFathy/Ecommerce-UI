@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
       invokeFirstComponentFunction.subscribe((name:string) => {    
         console.log("emitted")
         this.checkToken();    
+        this.user=true
       });    
     }   
   }
