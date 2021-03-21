@@ -73,6 +73,7 @@ const routes: Routes = [
     },
     EventEmitterService,
   ],
+  exports: [ RouterModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
