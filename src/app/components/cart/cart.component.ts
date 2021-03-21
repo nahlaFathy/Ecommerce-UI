@@ -27,7 +27,7 @@ export class CartComponent implements OnInit {
   }
   getProducts(){
     this.CartService.allProducts().subscribe((response) => {
-      console.log(response);
+      this.total = 0;
       this.products = response;
       if (this.products.length == 0) this.emptyCart = true;
       else this.emptyCart = false;
@@ -45,7 +45,7 @@ export class CartComponent implements OnInit {
   deleteProduct(_product) {
     if (confirm(`Are you sure you want to delete the selected product?`)) {
       this.CartService.deleteProduct(_product).subscribe(
-        () => this.ngOnInit()),
+        () => this.getProducts()),
         err => {
           console.log(err);
         }
@@ -75,6 +75,7 @@ export class CartComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.total = 0;
           this.getProducts();
         },
         err => console.log(err)
