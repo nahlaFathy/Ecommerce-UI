@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
         console.log("emitted")
         this.checkToken();    
         this.user=true
-        this.isAdmin=false
+        this.isAdmin= localStorage.getItem("isAdmin") == "true";
       });    
     }   
   }
