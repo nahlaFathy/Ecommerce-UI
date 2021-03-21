@@ -5,7 +5,6 @@
   "compilerOptions": {
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
-   
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -21,6 +20,7 @@
     ]
   },
   "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false
+    "enableI18nLegacyMessageIdFormat": false,
+    "enableIvy": false
   }
 }

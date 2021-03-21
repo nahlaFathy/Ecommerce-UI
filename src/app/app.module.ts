@@ -1,4 +1,5 @@
 declare var require: any
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -55,7 +56,8 @@ const routes: Routes = [
     SliderComponent,
     AboutComponent,
     OrdersComponent,
-    AddProductComponent
+    AddProductComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
