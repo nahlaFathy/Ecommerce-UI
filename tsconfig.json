@@ -3,7 +3,7 @@
   "compileOnSave": false,
   
   "compilerOptions": {
-     "paths": { "@app/config": ["./src/config/environment.dev.ts"]
+     "paths": { 
       },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
