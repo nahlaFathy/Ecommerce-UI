@@ -26,8 +26,10 @@ import { AboutComponent } from './components/about/about.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '', component: HomeComponent },
+ 
+  { path: '', component: HomeComponent ,
+    children:[{path:'', component:SliderComponent},
+  { path:'',component:ProductComponent,children:[{path:'',component:AddProductComponent}]} ]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'register', component: RegisterComponent, canActivate: [LogginAuthGuardService] },
   { path: 'login', component: LoginComponent, canActivate: [LogginAuthGuardService] },
