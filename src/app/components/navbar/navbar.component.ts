@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
 
     this.checkToken()
+    ///// listen to login component  to check tokens
     if (this.eventEmitterService.subsVar==undefined) {    
       this.eventEmitterService.subsVar = this.eventEmitterService.    
       invokeFirstComponentFunction.subscribe((name:string) => {    
