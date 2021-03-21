@@ -14,7 +14,7 @@ export class LogginAuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
     if (this.authService.isLogged()) {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/'])
         return false;
     }
     return true;

@@ -65,7 +65,7 @@ export class CartComponent implements OnInit {
 
   //navigate to home
   goHome() {
-    this.route.navigateByUrl('/home');
+    this.route.navigateByUrl('/');
   }
 
   //checkout products to order

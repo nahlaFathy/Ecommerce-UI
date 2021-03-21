@@ -17,10 +17,12 @@ export class OrderComponent implements OnInit {
   productImg: string = '/assets/img/products/1.png';
   orders: [];
   priceImg: string = '/assets/img/5.png';
-
+  page: Number = 1;
+  totalOrders: number;
   ngOnInit(): void {
     this.OrderService.allOrders().subscribe((response) => {
       this.orders = response;
+      this.totalOrders = this.orders.length;
       if(this.orders.length == 0) this.orderFlag = false;
       else this.orderFlag = true;
     });
@@ -28,7 +30,7 @@ export class OrderComponent implements OnInit {
 
   //navigate to home
   goHome() {
-    this.route.navigateByUrl('/home');
+    this.route.navigateByUrl('/');
   }
 
   //cancel product
