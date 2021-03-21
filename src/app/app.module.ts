@@ -1,5 +1,5 @@
 declare var require: any
-
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,9 +8,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { ProductComponent } from './components/product/product.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './Components/login/login.component';
-import { ErrorComponent } from './Components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from "./components/footer/footer.component";
@@ -25,7 +22,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AboutComponent } from './components/about/about.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { ErrorComponent } from './components/error/error.component';
 const routes: Routes = [
  
   { path: '', component: HomeComponent ,
@@ -46,7 +44,6 @@ const routes: Routes = [
     CartComponent,
     ProductComponent,
     RegisterComponent,
-    LoginComponent,
     HomeComponent,
     ProfileComponent,
     FooterComponent,
@@ -57,7 +54,8 @@ const routes: Routes = [
     AboutComponent,
     OrdersComponent,
     AddProductComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
