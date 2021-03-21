@@ -13,8 +13,11 @@ export class NavbarComponent implements OnInit {
  action:string ="Sign In"
  iconClass:string="fas fa-sign-in-alt fa-lg"
  root:string="/register"
+ isAdmin: boolean
+ user: boolean
   ngOnInit(): void {
-
+    this.isAdmin = localStorage.getItem("isAdmin") == "true";
+    this.user=localStorage.getItem('Token')!=null;
     this.checkToken()
     ///// listen to login component  to check tokens
     if (this.eventEmitterService.subsVar==undefined) {    
@@ -43,8 +46,7 @@ export class NavbarComponent implements OnInit {
     
     }
   }
-  isAdmin: boolean = localStorage.getItem("isAdmin") == "true";
-  user: boolean = localStorage.getItem('Token')!=null;
+  
    checkToken(){
     if(localStorage.getItem('Token')!=null||localStorage.getItem('Token')!=undefined)
     {
