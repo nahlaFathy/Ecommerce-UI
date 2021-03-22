@@ -16,7 +16,9 @@
     background-attachment: fixed;
     background-size: cover;
 }
-
+.account-settings{
+	text-align: center;
+}
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
     padding-bottom: 1rem;
@@ -185,7 +187,7 @@ tbody:hover tr:hover td {
   }
   .delete{
 	  color: darkred;
-	  
+	 
   }
   .btn{
 	margin: 5px;
