@@ -54,8 +54,7 @@ export class ProductComponent implements OnInit {
         if (sure == true) {
             this.http.delete(environment.api + '/api/product/' + productId)
                 .subscribe(res => {
-                    console.log(index);
-                    this.products.splice(index, 1);
+                    this.getAllProducts()
                 },
                     err => {
                         console.log(err)
