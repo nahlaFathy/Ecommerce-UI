@@ -37,7 +37,10 @@ export class OrderComponent implements OnInit {
   cancelOrder(_order){
     if (confirm(`Are you sure you want to cancel the selected order?`)) {
       this.OrderService.cancelOrder(_order).subscribe(
-        () => this.ngOnInit()),
+        () => {
+          this.ngOnInit();
+          this.route.navigateByUrl('/order');
+        }),
         err => {
           console.log(err);
         }
