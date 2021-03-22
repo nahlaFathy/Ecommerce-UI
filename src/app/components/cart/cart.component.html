@@ -11,9 +11,9 @@
                             </div>
                             <div class="col-md-6 flex-item-1">
                                 <article class="bg-text">
-                                    <h4>{{product.title}}</h4>
+                                    <h4>{{product.title.slice(0,14)}}</h4>
                                     <a class="price">${{product.price}}</a>
-                                    <p>{{product.details}}</p>
+                                    <p>{{product.details.slice(0,50)}}</p>
                                     <div (click)="deleteProduct(product._id)" class="btn-wrap"><a class="btn-1">
                                             <span>delete product</span></a>
                                     </div>

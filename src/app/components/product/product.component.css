@@ -54,6 +54,10 @@
 
 .card{
     margin-bottom: 1em;
+    -webkit-box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+    margin-top: 5px;
 }
 
 .close-div{
@@ -122,4 +126,20 @@ input:focus{
 
 .fa-search{
     align-self: center;
+}
+
+.product-img{
+    display: block;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-text{
+    height: 90px;
+}
+
+.card-body img:hover{
+    transition: opacity 0.6s;
+    transition-timing-function: ease-in-out;
+    opacity: 0.9;
 }

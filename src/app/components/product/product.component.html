@@ -27,11 +27,13 @@
                 <div *ngIf="isAdmin;" (click)="removeProduct(product._id,i)"
                     class="close-div text-right align-self-end">
                 </div>
-                <img src="{{product.image}}" width="250" class="img-fluid img-responsive rounded product-image">
-                <h5 class="card-title">{{product.title}}</h5>
+                <div class="product-img">
+                    <img src="{{product.image}}" width="250" class="img-fluid img-responsive rounded product-image">
+                </div>
+                <h5 class="card-title">{{product.title.slice(0,13)}}</h5>
                 <hr>
                 <div class="card-text text-center">
-                    <p class="details">{{product.details}} </p>
+                    <p class="details">{{product.details.slice(0,50)}} </p>
                     <p class="price">${{product.price}} </p>
                 </div>
                 <div class="d-flex flex-column mt-4">
