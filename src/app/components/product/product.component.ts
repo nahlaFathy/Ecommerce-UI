@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { environment } from "../../../environments/environment";
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notification.service'
 
 @Component({
     selector: 'app-product',
@@ -24,6 +25,7 @@ export class ProductComponent implements OnInit {
         private http: HttpClient,
         private ProductService: ProductService,
         private CartService: CartService,
+        private notifyService : NotificationService
     ) { }
     ngOnInit(): void {
         this.isAdding = false;
@@ -64,6 +66,7 @@ export class ProductComponent implements OnInit {
     //add product to cart
     addCart(id) {
         this.CartService.addProduct(id).subscribe(Response => {
+            this.notifyService.showSuccess("Product added successfuly ", "Add to cart")
             console.log(Response)
         }),
             err => console.log(err)

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { EventEmitterService } from '../../services/event-emitter.service';    
-
+import { NotificationService } from '../../services/notification.service'
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
   
   constructor(private LoginService:LoginService,
     private router: Router,
-    private eventEmitterService: EventEmitterService    ) { }
+    private eventEmitterService: EventEmitterService,
+    private notifyService : NotificationService
+        ) { }
    response:[]
   myForm = new FormGroup({
     email:new FormControl('',[Validators.required]),
@@ -41,7 +43,7 @@ export class LoginComponent implements OnInit {
              this.eventEmitterService.onLoginComponentButtonClick();  
              this.router.navigateByUrl("/")
             },
-          err => alert(err.error)
+          err => this.notifyService.showError(err.error, "Login")
           
         );
     }

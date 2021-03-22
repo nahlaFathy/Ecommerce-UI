@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register.service';
 import {  Router } from '@angular/router';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { NotificationService } from '../../services/notification.service'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
      private RegisterService:RegisterService,
-    private router: Router
+    private router: Router,
+    private notifyService : NotificationService
   ) { }
   myForm = new FormGroup({
     username:new FormControl('',[Validators.required,Validators.minLength(4)]),
@@ -35,7 +37,7 @@ export class RegisterComponent implements OnInit {
              console.log(response)
              this.router.navigateByUrl("/login")
             },
-          err => alert(err.error)
+          err => this.notifyService.showError(err.error, "Register")
         );
     }
     }
