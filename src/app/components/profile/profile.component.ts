@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FileSelectDirective, FileDropDirective, FileUploader, FileUploaderOptions } from 'ng2-file-upload';
 import { Router } from '@angular/router';
 
@@ -26,10 +26,10 @@ export class ProfileComponent implements OnInit {
  
   image
   myForm = new FormGroup({
-    username:new FormControl('',[]),
-    email:new FormControl('',[]),
-    password:new FormControl('',[]),
-    gender:new FormControl('',[]),
+    username:new FormControl('',[Validators.minLength(4)]),
+    email:new FormControl('',[Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    password:new FormControl('',[Validators.minLength(6)]),
+    gender:new FormControl('',[])
   })
    ngOnInit(): void {
     this.getInfo()
