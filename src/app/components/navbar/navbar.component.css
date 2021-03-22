@@ -149,6 +149,10 @@
   color: black;
  
 }
+.active-profile{
+  color: black;
+ 
+}
 .navbar-nav .active i::after {
   border-bottom: 2px solid black;
   bottom: -10px;
@@ -157,4 +161,5 @@
   position: absolute;
   right: -25px;
 }
+
 
