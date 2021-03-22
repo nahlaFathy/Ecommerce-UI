@@ -1,7 +1,10 @@
 .navbar{
     background-color: white;
 }
-
+.navbar-nav > li {
+  float: left;
+  position: relative;
+}
 .navbar-icon-top .navbar-nav .nav-link > .fa {
   position: relative;
   width: 36px;
@@ -11,7 +14,6 @@
 
 .navbar-icon-top .navbar-nav .nav-link > .fa span{
   font-size: 15px;
-  padding: 7px;
 }
 
 .navbar-brand{
@@ -145,8 +147,14 @@
 }
 .active{
   color: black;
-  background-color: black;
+ 
 }
-.store{
-  margin-left: 20px;
+.active i::after {
+  border-bottom: 2px solid black;
+  bottom: -10px;
+  content: " ";
+  left: 30px;
+  position: absolute;
+  right: -25px;
 }
+

@@ -16,27 +16,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="/">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <i class="fa fa-home"><span>Home</span></i> 
         </a>
       </li>
       <li class="nav-item" >
-        <a *ngIf="!isAdmin" class="nav-link" href="/cart">
+        <a *ngIf="!isAdmin" class="nav-link"  routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <i class="fa fa-shopping-cart"><span>Cart</span></i> 
         </a>
       </li>
       <li class="nav-item" >
-        <a class="nav-link" *ngIf="!isAdmin" href="/order">
+        <a class="nav-link" *ngIf="!isAdmin"  routerLink="/order" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <i class="fa fa-archive"><span>Order</span></i> 
         </a>
       </li>
       <li class="nav-item" >
-        <a *ngIf="isAdmin" class="nav-link " href="/orders">
+        <a *ngIf="isAdmin" class="nav-link "  routerLink="/orders" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <i class="fa fa-archive"><span>Orders</span></i> 
         </a>
       </li>
       <li class="nav-item" >
-        <a class="nav-link " href="/about">
+        <a class="nav-link "  routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <i class="fa fas fa-info-circle"><span>About</span></i>
         </a>
       </li>
