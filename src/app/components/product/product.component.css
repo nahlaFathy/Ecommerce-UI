@@ -142,4 +142,5 @@ input:focus{
     transition: opacity 0.6s;
     transition-timing-function: ease-in-out;
     opacity: 0.9;
+    cursor: pointer;
 }

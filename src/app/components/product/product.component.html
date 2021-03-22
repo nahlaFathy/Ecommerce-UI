@@ -28,7 +28,8 @@
                     class="close-div text-right align-self-end">
                 </div>
                 <div class="product-img">
-                    <img src="{{product.image}}" width="250" class="img-fluid img-responsive rounded product-image">
+                    <img src="{{product.image}}" (click)="openImage(imageModal); imageId(product)"
+                        class="img-fluid img-responsive rounded product-image">
                 </div>
                 <h5 class="card-title">{{product.title.slice(0,13)}}</h5>
                 <hr>
@@ -41,10 +42,25 @@
                         Add to cart
                     </a>
                 </div>
-               
+
             </div>
         </div>
     </div>
     <pagination-controls *ngIf="user;" id="listing_pagination" class="text-center paginationNo" maxSize="6"
         directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+
+    <!-- modal to open product -->
+    <ng-template #imageModal let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title">Product Details</h5>
+        </div>
+        <div class="modal-body">
+            <img width="100%" src="{{image.image}}">
+        </div>
+        <h5 class="text-center p-3">
+            {{image.title}}
+        </h5>
+        <p class="text-center p-3">{{image.details}}</p>
+    </ng-template>
+</div>
 </div>

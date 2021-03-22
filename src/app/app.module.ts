@@ -28,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminAuthService } from './services/admin-auth.service';
 import { UserAuthService } from './services/user-auth.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
  
@@ -70,7 +71,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgbModule
 
   ],
   providers: [

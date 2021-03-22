@@ -4,6 +4,7 @@ import { environment } from "../../../environments/environment";
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { NotificationService } from '../../services/notification.service'
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-product',
@@ -21,11 +22,13 @@ export class ProductComponent implements OnInit {
     products = [];
     productImg: string = '/assets/img/products/2.png';
     page: Number = 1;
+    closeResult: string;
     constructor(
         private http: HttpClient,
         private ProductService: ProductService,
         private CartService: CartService,
-        private notifyService : NotificationService
+        private notifyService: NotificationService,
+        private modalService: NgbModal
     ) { }
     ngOnInit(): void {
         this.isAdding = false;
@@ -77,5 +80,29 @@ export class ProductComponent implements OnInit {
         this.products = this.allProducts.filter((element) => {
             return element.title.toLowerCase().includes(e.value.toLowerCase());
         });
+    }
+
+    //open image
+    image: string;
+    imageId(_image) {
+        this.image = _image;
+    }
+    openImage(_image) {
+        this.modalService.open(_image, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+
+
+    private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+            return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        } else {
+            return `with: ${reason}`;
+        }
     }
 }
