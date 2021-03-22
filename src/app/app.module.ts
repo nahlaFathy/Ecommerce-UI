@@ -26,6 +26,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminAuthService } from './services/admin-auth.service';
+import { UserAuthService } from './services/user-auth.service';
 
 const routes: Routes = [
  
@@ -35,9 +37,9 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'register', component: RegisterComponent, canActivate: [LogginAuthGuardService] },
   { path: 'login', component: LoginComponent, canActivate: [LogginAuthGuardService] },
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuardService] },
-  { path: 'order', component: OrderComponent, canActivate: [AuthGuardService] },
-  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuardService] },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuardService, UserAuthService] },
+  { path: 'order', component: OrderComponent, canActivate: [AuthGuardService, UserAuthService] },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuardService, AdminAuthService] },
   { path: 'about', component: AboutComponent },
   { path: '**', component: ErrorComponent },
 ]
@@ -73,6 +75,9 @@ const routes: Routes = [
   ],
   providers: [
     AuthGuardService,
+    UserAuthService,
+    AdminAuthService,
+    LogginAuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
