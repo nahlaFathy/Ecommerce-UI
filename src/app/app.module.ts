@@ -60,7 +60,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    
+    RouterModule,
     RouterModule.forRoot(routes),
     NgxPaginationModule,
     ReactiveFormsModule,
