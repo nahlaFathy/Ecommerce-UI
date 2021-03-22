@@ -3,6 +3,7 @@ import { ProfileService } from '../../services/profile.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FileSelectDirective, FileDropDirective, FileUploader, FileUploaderOptions } from 'ng2-file-upload';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../services/notification.service'
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,8 @@ export class ProfileComponent implements OnInit {
   }
   constructor(
               private  ProfileService: ProfileService,
-              private router: Router
+              private router: Router,
+              private notifyService : NotificationService
               ) { }
  
   url:string
@@ -52,6 +54,7 @@ export class ProfileComponent implements OnInit {
     .subscribe(
       res =>
       {
+        this.notifyService.showSuccess("Image updated successfuly", "Image")
          this.url=res.body.image;
          console.log(res)
         },
@@ -85,6 +88,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         async res=>
         {
+          this.notifyService.showSuccess("User Info updated successfuly", "Info Update")
           this.userInfo=res.body.user
           this.myForm.reset();
         }

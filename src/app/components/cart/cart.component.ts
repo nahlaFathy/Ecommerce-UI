@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../services/notification.service'
 
 @Component({
   selector: 'app-cart',
@@ -12,6 +13,7 @@ export class CartComponent implements OnInit {
   constructor(
     private route: Router,
     private CartService: CartService,
+    private notifyService : NotificationService
   ) { }
   productImg: string = '/assets/img/products/2.png';
   priceImg: string = '/assets/img/4.png';
@@ -77,7 +79,7 @@ export class CartComponent implements OnInit {
       this.CartService.checkout(this.productIds, this.total)
         .subscribe(
           response => {
-            // console.log(response);
+            this.notifyService.showSuccess("Order Placed successfuly", "Check Out")
             this.total = 0;
             this.getProducts();
             this.route.navigateByUrl('/cart');

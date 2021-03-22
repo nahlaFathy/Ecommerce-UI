@@ -24,6 +24,9 @@ import { AboutComponent } from './components/about/about.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const routes: Routes = [
  
   { path: '', component: HomeComponent ,
@@ -60,11 +63,13 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule,
     RouterModule.forRoot(routes),
     NgxPaginationModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [
     AuthGuardService,
