@@ -38,9 +38,9 @@
                     <div class="form-group">
                         <label for="fullName">Username</label>
                         <input type="text" class="form-control" formControlName="username" id="fullName" placeholder="Enter username">
-                        <p *ngIf="myForm.controls.username.errors" class="alert ">
+                        <p *ngIf="submitted && myForm.controls.username.errors" class="alert ">
                   
-                            <span *ngIf="myForm.controls.username.errors.minlength" class="alert-danger">
+                            <span *ngIf=" myForm.controls.username.errors.minlength" class="alert-danger">
                                 length must be more than 5
                             </span>
                             
@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="eMail">Email</label>
                         <input type="email" class="form-control" id="eMail" formControlName="email" placeholder="Enter email ">
-                        <p *ngIf="myForm.controls.email.errors" class="alert ">
+                        <p *ngIf="submitted && submitted && myForm.controls.email.errors" class="alert ">
                   
                             <span *ngIf="myForm.controls.email.errors.pattern" class="alert-danger">
                             invalid email
@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <label for="phone">Password</label>
                         <input type="password" class="form-control" id="phone"formControlName="password" placeholder="Enter password">
-                        <p *ngIf="myForm.controls.password.errors" class="alert ">
+                        <p *ngIf="submitted && myForm.controls.password.errors" class="alert ">
                   
                             <span *ngIf="myForm.controls.password.errors.minlength" class="alert-danger">
                             length must be more than 6

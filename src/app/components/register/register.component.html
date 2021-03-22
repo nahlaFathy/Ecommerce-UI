@@ -7,7 +7,10 @@
                 <form [formGroup]="myForm" method="post" action="">
                     <div>
                         <input class="input--style-3 js-datepicker" type="text" formControlName="username" placeholder="Username" name="username">
-                        <p *ngIf="myForm.controls.username.errors" class="alert ">
+                        <p *ngIf="submitted && myForm.controls.username.errors" class="alert ">
+                            <span *ngIf="myForm.controls.username.errors.required" class="alert-danger">
+                                *required
+                                 </span>
                             <span *ngIf="myForm.controls.username.errors.minlength" class="alert-danger">
                             length must be more than 5
                             </span>
@@ -18,8 +21,11 @@
                     
                     <div>
                         <input class="input--style-3 js-datepicker" type="email"  formControlName="email" placeholder="Email" name="Email">
-                        <p *ngIf="myForm.controls.email.errors" class="alert ">
+                        <p *ngIf="submitted && myForm.controls.email.errors" class="alert ">
                   
+                            <span *ngIf="myForm.controls.email.errors.required" class="alert-danger">
+                               *required
+                                </span>
                             <span *ngIf="myForm.controls.email.errors.pattern" class="alert-danger">
                             invalid email
                             </span>
@@ -33,8 +39,10 @@
 
                     <div>
                         <input class="input--style-3" type="password"  formControlName="password" placeholder="Password" name="Password">
-                        <p *ngIf="myForm.controls.password.errors" class="alert ">
-                  
+                        <p *ngIf="submitted && myForm.controls.password.errors" class="alert ">
+                            <span *ngIf=" myForm.controls.password.errors.required" class="alert-danger">
+                                *required
+                                 </span>
                             <span *ngIf="myForm.controls.password.errors.minlength" class="alert-danger">
                             length must be more than 6
                             </span>
@@ -44,16 +52,16 @@
 
                     <div >
                         <div class="rs-select2 js-select-simple select--no-search">
-                          <label class="gender">Gender  </label>  
+                          <label class="gender">Gender </label>  
                            <select class="select-dropdown"  formControlName="gender">
                                 <option selected disabled="disabled" >Gender</option>
                                 <option >Male</option>
                                 <option>Female</option>
                             </select>
-                            <p *ngIf="myForm.controls.gender.errors" class="alert ">
+                            <p *ngIf="submitted && myForm.controls.gender.errors" class="alert ">
                   
                                 <span *ngIf="myForm.controls.gender.errors.required" class="alert-danger">
-                                
+                                    *required
                                 </span>
                                 </p>
                             
@@ -61,7 +69,7 @@
                     </div>
                     
                     <div class="p-t-10">
-                        <button class="btn btn--pill btn-light " type="submit" (click)="Register()" [disabled]="!myForm.valid">Submit</button>
+                        <button class="btn btn--pill btn-light " type="submit" (click)="Register()" >Submit</button>
                     </div>
                 </form>
                 <p class="p"(click)="login()">already have an account</p>

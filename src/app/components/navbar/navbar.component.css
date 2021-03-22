@@ -149,7 +149,7 @@
   color: black;
  
 }
-.active i::after {
+.navbar-nav .active i::after {
   border-bottom: 2px solid black;
   bottom: -10px;
   content: " ";

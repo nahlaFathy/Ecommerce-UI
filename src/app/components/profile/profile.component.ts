@@ -12,6 +12,7 @@ import { NotificationService } from '../../services/notification.service'
 })
 export class ProfileComponent implements OnInit {
   uploader: FileUploader;
+  submitted: boolean=false;
   ngOnChanges(){
     
   }
@@ -31,8 +32,9 @@ export class ProfileComponent implements OnInit {
     username:new FormControl('',[Validators.minLength(4)]),
     email:new FormControl('',[Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     password:new FormControl('',[Validators.minLength(6)]),
+    confirmPassword:new FormControl(['', Validators.minLength(6)]),
     gender:new FormControl('',[])
-  })
+      })
    ngOnInit(): void {
     this.getInfo()
     this.getOrders()
@@ -79,7 +81,8 @@ export class ProfileComponent implements OnInit {
     );
   }
   updateInfo(){
-    if(this.myForm.value)
+    this.submitted = true;
+    if(this.myForm.valid)
     {
 
     console.log(this.myForm.value)

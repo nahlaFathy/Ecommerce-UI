@@ -9,6 +9,7 @@ import { NotificationService } from '../../services/notification.service'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  submitted: boolean=false;
   
 
   constructor(
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   Register() {
+    this.submitted = true;
     if(this.myForm.valid)
     {
       console.log(this.myForm.value)
