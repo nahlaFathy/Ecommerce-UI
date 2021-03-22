@@ -12,7 +12,7 @@
             <ng-template ngFor let-order [ngForOf]="orders| paginate: {
                 id: 'listing_pagination', itemsPerPage: 6, currentPage: page, totalItems: totalOrders}" let-i="index">
                 <div class="cart-cover col-md-12">
-                    <div class="text-center">
+                    <div class="text-center order-cart">
                         <article class="bg-text">
                             <h4>{{order._id}}</h4>
                             <a class="price">{{order.totalPrice}}$</a>
@@ -34,7 +34,7 @@
             <div class="cart-cover text-center">
                 <div class="row flex-sm nopadding">
                     <div class="col-md-3 flex-item-2">
-                        <a><img src={{productImg}} alt=""></a>
+                        <a><img src={{productImg}} class="img-fluid" alt=""></a>
                     </div>
                     <div class="col-md-9 flex-item-1">
                         <article class="bg-text mt-5">

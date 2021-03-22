@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
 
   constructor(
-    private route:Router,
+    private route: Router,
     private CartService: CartService,
   ) { }
   productImg: string = '/assets/img/products/2.png';
@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
     //get Products for the user
     this.getProducts();
   }
-  getProducts(){
+  getProducts() {
     this.CartService.allProducts().subscribe((response) => {
       this.total = 0;
       this.products = response;
@@ -39,13 +39,16 @@ export class CartComponent implements OnInit {
       this.products.forEach(element => {
         this.productIds.push(element._id);
       });
-    }); 
+    });
   }
   //delete Product from cart
   deleteProduct(_product) {
     if (confirm(`Are you sure you want to delete the selected product?`)) {
       this.CartService.deleteProduct(_product).subscribe(
-        () => this.getProducts()),
+        () => {
+          this.getProducts();
+          this.route.navigateByUrl('/cart');
+        }),
         err => {
           console.log(err);
         }
@@ -72,14 +75,15 @@ export class CartComponent implements OnInit {
   checkout() {
     if (confirm(`Are you sure you want to order?`)) {
       this.CartService.checkout(this.productIds, this.total)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.total = 0;
-          this.getProducts();
-        },
-        err => console.log(err)
-      );
+        .subscribe(
+          response => {
+            // console.log(response);
+            this.total = 0;
+            this.getProducts();
+            this.route.navigateByUrl('/cart');
+          },
+          err => console.log(err)
+        );
     }
   }
 
