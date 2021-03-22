@@ -75,6 +75,9 @@ const routes: Routes = [
   ],
   providers: [
     AuthGuardService,
+    UserAuthService,
+    AdminAuthService,
+    LogginAuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
