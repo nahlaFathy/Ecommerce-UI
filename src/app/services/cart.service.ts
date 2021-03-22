@@ -23,7 +23,7 @@ export class CartService {
   //delete one product from cart
   public deleteProduct(id: string): Observable<any> {
     return this._HttpClient
-      .delete(`${this.baseURL}/${id}`)
+      .delete(`${this.baseURL}${id}`,{responseType: 'text'})
   }
 
   //add product to cart

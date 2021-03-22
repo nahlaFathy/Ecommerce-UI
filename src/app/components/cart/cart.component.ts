@@ -45,9 +45,9 @@ export class CartComponent implements OnInit {
   deleteProduct(_product) {
     if (confirm(`Are you sure you want to delete the selected product?`)) {
       this.CartService.deleteProduct(_product).subscribe(
-        () => {
-          this.getProducts();
-          this.route.navigateByUrl('/cart');
+        (res) => {
+          this.getProducts()
+         this.route.navigateByUrl('/cart');
         }),
         err => {
           console.log(err);
