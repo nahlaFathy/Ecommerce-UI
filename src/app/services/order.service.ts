@@ -28,7 +28,8 @@ export class OrderService {
   //cancel pending order
   public cancelOrder(id: string): Observable<any> {
     return this._HttpClient
-      .delete(`${this.baseURL}/${id}`)
+      .delete(`${this.baseURL}/${id}`,
+      { responseType: "text" })
   }
 
   //change order status for admin
