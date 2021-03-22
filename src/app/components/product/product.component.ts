@@ -66,7 +66,7 @@ export class ProductComponent implements OnInit {
     //add product to cart
     addCart(id) {
         this.CartService.addProduct(id).subscribe(Response => {
-            this.notifyService.showSuccess("Product added successfuly !!", "Add to cart")
+            this.notifyService.showSuccess("Product added successfuly ", "Add to cart")
             console.log(Response)
         }),
             err => console.log(err)

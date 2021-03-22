@@ -19,6 +19,7 @@
                 <app-add-product (addProductEvent)="addProductEvent($event)" *ngIf="isAdding"></app-add-product>
             </div>
         </div>
+        <div *ngIf="products.length==0">No Items Found ..</div>
         <div *ngFor="let product of products | paginate: {
             id: 'listing_pagination', itemsPerPage: 12, currentPage: page, totalItems: totalProducts}"
             class=" card col-md-3" style="width: 18rem;">
