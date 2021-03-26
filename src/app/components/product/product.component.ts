@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit , ElementRef, Renderer2,} from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+import {OrderService} from '../../services/order.service';
 import { NotificationService } from '../../services/notification.service'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,15 +21,18 @@ export class ProductComponent implements OnInit {
     totalProducts: number;
     allProducts = [];
     products = [];
+    buttons
     productImg: string = '/assets/img/products/2.png';
     page: Number = 1;
     closeResult: string;
     constructor(
         private http: HttpClient,
         private ProductService: ProductService,
+        private OrderService:OrderService,
         private CartService: CartService,
         private notifyService: NotificationService,
-        private modalService: NgbModal
+        private modalService: NgbModal,
+       
     ) { }
     ngOnInit(): void {
         this.isAdding = false;
@@ -38,7 +42,9 @@ export class ProductComponent implements OnInit {
 
     getAllProducts() {
         this.ProductService.allProducts().subscribe((response) => {
+          
             this.allProducts = response['products'];
+            this.buttons = Array(this.allProducts.length).fill(false); 
             this.products = this.allProducts;
             this.totalProducts = this.products.length;
         }),
@@ -51,8 +57,12 @@ export class ProductComponent implements OnInit {
         this.products.push(event);
     }
     removeProduct(productId, index) {
-
-        const sure = confirm("Are you sure to delete this product ?");
+        
+        this.OrderService.ifProduct(productId).subscribe((res)=>{
+            console.log(res)
+            if(res==0)
+            {
+                const sure = confirm("Are you sure to delete this product ?");
 
         if (sure == true) {
             this.http.delete(environment.api + '/api/product/' + productId)
@@ -63,11 +73,21 @@ export class ProductComponent implements OnInit {
                         console.log(err)
                     })
         }
+            }
+            else
+            {
+                this.notifyService.showWarning("Can't delete this product ... it already exists in an order", "Delete Product")
+            }
+        })
+
+      
     }
 
     //add product to cart
-    addCart(id) {
+    addCart(id,index) {
+       
         this.CartService.addProduct(id).subscribe(Response => {
+            this.buttons[index]=true;
             this.notifyService.showSuccess("Product added successfuly ", "Add to cart")
             console.log(Response)
         }),
@@ -105,4 +125,5 @@ export class ProductComponent implements OnInit {
             return `with: ${reason}`;
         }
     }
+   
 }

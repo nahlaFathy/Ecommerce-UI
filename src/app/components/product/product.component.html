@@ -21,7 +21,7 @@
         </div>
         <div *ngIf="products.length==0 && user==true">No Items Found ..</div>
         <div *ngFor="let product of products | paginate: {
-            id: 'listing_pagination', itemsPerPage: 12, currentPage: page, totalItems: totalProducts}"
+            id: 'listing_pagination', itemsPerPage: 12, currentPage: page, totalItems: totalProducts};index as j"
             class=" card col-md-3" style="width: 18rem;">
             <div class="card-body">
                 <div *ngIf="isAdmin;" (click)="removeProduct(product._id,i)"
@@ -38,9 +38,9 @@
                     <p class="price">${{product.price}} </p>
                 </div>
                 <div class="d-flex flex-column mt-4">
-                    <a (click)="addCart(product._id)" *ngIf="!isAdmin" class="btn-1">
+                    <button (click)="addCart(product._id,j) "[disabled]="buttons[j]"  *ngIf="!isAdmin" class="btn-1">
                         Add to cart
-                    </a>
+                    </button>
                 </div>
 
             </div>

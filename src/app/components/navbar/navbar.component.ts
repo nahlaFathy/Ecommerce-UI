@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router,private eventEmitterService: EventEmitterService  ) { }
  action:string ="Sign In"
  iconClass:string="fas fa-sign-in-alt fa-lg"
- root:string="/register"
+ root:string="/login"
  isAdmin: boolean
  user: boolean
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
     }
     else
     {
-      this.root="/register"
+      this.root="/login"
     
     }
   }
@@ -54,7 +54,7 @@ export class NavbarComponent implements OnInit {
       this.iconClass='far fa-user-circle fa-lg'
     }
     else{
-      this.action="Sing In"
+      this.action="Sign In"
       this.iconClass="fas fa-sign-in-alt fa-lg"
     }
   }

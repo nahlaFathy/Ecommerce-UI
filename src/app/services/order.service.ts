@@ -40,5 +40,11 @@ export class OrderService {
       { responseType: "text" }
       )
   }
+  // check if the prodcut in order
+  public ifProduct(id):Observable<any>
+  {
+    return this._HttpClient
+    .get(`${this.baseURL}/orders/${id}`)
+  }
   
 }

@@ -16,7 +16,9 @@
     color: rgb(70, 68, 68);
     text-align: center;
 }
-
+.btn-1{
+    border: none;
+}
 .card-icon-div{
     border-radius: 50%;
     width: 50px;
